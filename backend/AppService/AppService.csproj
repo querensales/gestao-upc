@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Domain\Account\Response\" />
+    <Folder Include="Domain\Account\NewFolder\" />
     <Folder Include="Model\Request\" />
   </ItemGroup>
 
