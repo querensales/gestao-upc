@@ -6,6 +6,6 @@ using System.Threading.Tasks;
 
 namespace AppService.Domain.Account.Request;
 
-public class LoginRequest
+public record LoginRequest
 {
 }
