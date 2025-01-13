@@ -4,11 +4,8 @@
   background: #9E9E9E;
   border-radius: 10px;
   padding: 30px;
+  max-width: 550px;
  }
-
-h1{
-  font-family: "Source Serif 4", serif;
-}
 
 li{
     list-style-type: none;

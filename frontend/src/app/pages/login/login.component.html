@@ -1,31 +1,22 @@
 <div class="vh-100 d-flex justify-content-center align-items-center">
-<section class="container w-50 sm:w-10 md:w-100 lg:w-50">
-  <div class="row justify-content-md-center">
-
-    <main class="col-10">
-      <h1>Login</h1>
-      <div class="form-floating mb-3">
-        <input type="email" class="form-control" id="floatingInput"
-          placeholder="name@example.com">
-        <label for="floatingInput">Email</label>
+  <main class="container">
+    <h1 class="text-right">Login</h1>
+    <form>
+      <section class="form-floating mb-3">
+        <input type="email" class="form-control" id="email" placeholder="name@example.com" aria-label="Digite seu email">
+        <label for="email">Email</label>
+      </section>
+      <section class="form-floating mb-3">
+        <input type="password" class="form-control" id="password" placeholder="Password" aria-label="Digite sua senha">
+        <label for="password">Senha</label>
+      </section>
+      <div class="d-grid gap-2">
+        <button type="submit" class="btn btn-primary btn-lg">Entrar</button>
       </div>
-      <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword"
-          placeholder="Password">
-        <label for="floatingPassword">Senha</label>
-      </div>
-    </main>
-  </div>
-
-  <div class="row pt-3 justify-content-md-center">
-    <div class="col-10 text-center d-grid gap-2">
-      <button class="btn btn-primary btn-lg">Entrar</button>
-      <ul class="list-group list-group-horizontal d-flex justify-content-between">
-        <li><a href="">Esqueceu senha?</a></li>
-        <li><a href="">Cadastrar-se</a></li>
-      </ul>
-    </div>
-
-  </div>
-</section>
+    </form>
+    <nav class="d-flex justify-content-between mt-3">
+      <a href="#" aria-label="Esqueceu sua senha?">Esqueceu a senha?</a>
+      <a href="#" aria-label="Cadastrar-se">Cadastrar-se</a>
+    </nav>
+  </main>
 </div>
