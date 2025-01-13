@@ -1,5 +1,11 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+.container{
+  background: #9E9E9E;
+ }
+
+li{
+    list-style-type: none;
+}
+
+h1, label{
+  color: #FFFFFF;
 }
