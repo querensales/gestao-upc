@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import LoginModel from '../../models/login.model';
 import { FormsModule } from '@angular/forms';
 
+
 @Component({
   imports: [FormsModule],
   selector: 'app-login',
