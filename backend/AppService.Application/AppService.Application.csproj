@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AppService\AppService.csproj" />
+    <ProjectReference Include="..\Repository\Repository.csproj" />
   </ItemGroup>
 
 </Project>
