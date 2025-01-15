@@ -1,7 +1,12 @@
-﻿using System.Net;
+﻿using System.IdentityModel.Tokens.Jwt;
+using System.Net;
+using System.Security.Claims;
+using System.Text;
 using AppService.Domain;
 using AppService.Domain.Account.Request;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 
 namespace WebApi.Controllers;
 
@@ -10,25 +15,23 @@ namespace WebApi.Controllers;
 public class SecurityController : ControllerBase
 {
     private readonly ISecurityService _securityService;
-    public SecurityController(ISecurityService securityService)
+    private readonly IConfiguration _configuration;
+    public SecurityController(
+        ISecurityService securityService,
+        IConfiguration configuration)
     {
         _securityService = securityService;
+        _configuration = configuration;
     }
 
 
     [HttpPost]
-    public IActionResult Login([FromBody] LoginRequest request)
+    [AllowAnonymous]
+    public async Task<IActionResult> Login([FromBody] LoginRequest request)
     {
-        try
-        {
-            _securityService.SignIn(request).Wait();
 
-        }
-        catch (Exception)
-        {
+        var token = await _securityService.SignIn(request);
 
-            
-        }
-        return Ok(HttpStatusCode.Accepted);
+        return Ok(token);
     }
 }
