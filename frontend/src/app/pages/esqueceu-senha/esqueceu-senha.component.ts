@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { AppRoutingModule } from '../../app.routes';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-esqueceu-senha',
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './esqueceu-senha.component.html',
   styleUrl: './esqueceu-senha.component.css'
 })
