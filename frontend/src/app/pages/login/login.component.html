@@ -1,0 +1,22 @@
+<div class="vh-100 d-flex justify-content-center align-items-center">
+  <main class="container">
+    <h1 class="text-right">Login</h1>
+
+      <section class="form-floating mb-3">
+        <input type="email" [(ngModel)]="valorDoEmail" class="form-control"  id="email" placeholder="" aria-label="Digite seu email" required/>
+        <label for="email">Email</label>
+      </section>
+      <section class="form-floating mb-3">
+        <input name="password" type="password" [(ngModel)]="valorDaSenha" class="form-control" id="password" placeholder="Password" aria-label="Digite sua senha" required>
+        <label for="password">Senha</label>
+      </section>
+      <div class="d-grid gap-2">
+        <button type="button" (click)="entrar()" class="btn btn-primary btn-lg">Entrar</button>
+      </div>
+
+    <nav class="d-flex justify-content-between mt-3">
+      <a href="javascript:;" aria-label="Esqueceu sua senha?">Esqueceu a senha?</a>
+      <a href="javascript:;" aria-label="Cadastrar-se">Cadastrar-se</a>
+    </nav>
+  </main>
+</div>
