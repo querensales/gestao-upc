@@ -1,8 +1,11 @@
-﻿using System.IdentityModel.Tokens.Jwt;
+﻿using System.ComponentModel.DataAnnotations;
+using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using AppService.Domain;
 using AppService.Domain.Account.Request;
+using AppService.Domain.Account.Validator;
+using AppService.Extension;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -24,6 +27,12 @@ public class SecurityService : ISecurityService
 
     public async Task AddUser(AddUserRequest request)
     {
+        var validator = new AddUserValidator(_appDbContext);
+        var validate = validator.Validate(request);
+        if (!validate.IsValid)
+        {
+            throw new CustomValidationException( validate.Errors);
+        }
         await _appDbContext.User.AddAsync(new Repository.Entity.User
         {
             Email = request.Email,
