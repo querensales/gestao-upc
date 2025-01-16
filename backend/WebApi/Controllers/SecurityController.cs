@@ -1,6 +1,6 @@
-﻿using System.Net;
-using AppService.Domain;
+﻿using AppService.Domain;
 using AppService.Domain.Account.Request;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers;
@@ -10,25 +10,41 @@ namespace WebApi.Controllers;
 public class SecurityController : ControllerBase
 {
     private readonly ISecurityService _securityService;
-    public SecurityController(ISecurityService securityService)
+    private readonly IConfiguration _configuration;
+    public SecurityController(
+        ISecurityService securityService,
+        IConfiguration configuration)
     {
         _securityService = securityService;
+        _configuration = configuration;
     }
 
 
     [HttpPost]
-    public IActionResult Login([FromBody] LoginRequest request)
+    [AllowAnonymous]
+    public async Task<IActionResult> Login([FromBody] LoginRequest request)
     {
-        try
-        {
-            _securityService.SignIn(request).Wait();
 
-        }
-        catch (Exception)
-        {
+        var token = await _securityService.SignIn(request);
 
-            
-        }
-        return Ok(HttpStatusCode.Accepted);
+        return Ok(token);
+    }
+
+    [HttpPost("add-user")]
+    [AllowAnonymous]
+    public async Task<IActionResult> AddUser([FromBody] AddUserRequest request)
+    {
+        await _securityService.AddUser(request);
+
+        return Accepted();
+    }
+
+    [HttpPut("{email}")]
+    [AllowAnonymous]
+    public async Task<IActionResult> ForgotPassword(string email)
+    {
+        await _securityService.ForgotPassword(email);
+
+        return Accepted();
     }
 }
