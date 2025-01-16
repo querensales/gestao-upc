@@ -36,6 +36,23 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 var app = builder.Build();
+// Aplicando migrações
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+
+    try
+    {
+        var context = services.GetRequiredService<AppDbContext>();
+        context.Database.Migrate();
+    }
+    catch (Exception ex)
+    {
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "Ocorreu um erro ao aplicar as migrações.");
+        // Tratar a exceção adequadamente. Em produção, você provavelmente deveria abortar a inicialização.
+    }
+}
 
 Console.WriteLine($"Ambiente: {app.Environment.EnvironmentName}");
 

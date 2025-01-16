@@ -1,12 +1,7 @@
-﻿using System.IdentityModel.Tokens.Jwt;
-using System.Net;
-using System.Security.Claims;
-using System.Text;
-using AppService.Domain;
+﻿using AppService.Domain;
 using AppService.Domain.Account.Request;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
 
 namespace WebApi.Controllers;
 
@@ -33,5 +28,23 @@ public class SecurityController : ControllerBase
         var token = await _securityService.SignIn(request);
 
         return Ok(token);
+    }
+
+    [HttpPost("add-user")]
+    [AllowAnonymous]
+    public async Task<IActionResult> AddUser([FromBody] AddUserRequest request)
+    {
+        await _securityService.AddUser(request);
+
+        return Accepted();
+    }
+
+    [HttpPut("{email}")]
+    [AllowAnonymous]
+    public async Task<IActionResult> ForgotPassword(string email)
+    {
+        await _securityService.ForgotPassword(email);
+
+        return Accepted();
     }
 }

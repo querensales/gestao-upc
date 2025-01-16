@@ -22,6 +22,30 @@ public class SecurityService : ISecurityService
         _configuration = configuration;
     }
 
+    public async Task AddUser(AddUserRequest request)
+    {
+        await _appDbContext.User.AddAsync(new Repository.Entity.User
+        {
+            Email = request.Email,
+            Id = Guid.NewGuid(),
+            Password = request.Password
+        });
+
+        await _appDbContext.SaveChangesAsync();
+    }
+
+    public async Task ForgotPassword(string email)
+    {
+        var user = await _appDbContext.User.SingleAsync(u => u.Email == email);
+    
+        if (user != null) 
+        {
+            user.Password = "123456";
+            _appDbContext.Update(user);
+            await _appDbContext.SaveChangesAsync();
+        }
+    }
+
     public async ValueTask<string> SignIn(LoginRequest loginRequest)
     {
         var user = await _appDbContext
@@ -50,8 +74,8 @@ public class SecurityService : ISecurityService
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
         var token = new JwtSecurityToken(
-            issuer: _configuration["Jwt:Issuer"],
-            audience: _configuration["Jwt:Audience"],
+            //issuer: _configuration["Jwt:Issuer"],
+            //audience: _configuration["Jwt:Audience"],
             claims: claims,
             expires: DateTime.Now.AddHours(1), // Tempo de expiração do token
             signingCredentials: creds
