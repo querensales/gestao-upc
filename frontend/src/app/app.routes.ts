@@ -9,7 +9,6 @@ import { NgModule } from '@angular/core';
 export const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path:'home', component: HomeComponent},
-  {path:'home', component: HomeComponent},
   {path:'esqueceuSenha', component: EsqueceuSenhaComponent},
   {path: 'cadastro', component: CadastroComponent}
 ];
