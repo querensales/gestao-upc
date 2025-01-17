@@ -4,5 +4,7 @@ namespace AppService.Domain;
 
 public interface ISecurityService
 {
-    Task SignIn(LoginRequest loginRequest);
+    Task AddUser(AddUserRequest request);
+    ValueTask<string> SignIn(LoginRequest loginRequest);
+    Task ForgotPassword(string email);
 }
