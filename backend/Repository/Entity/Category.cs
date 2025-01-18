@@ -1,5 +1,13 @@
-﻿namespace Repository.Entity;
+﻿using System.ComponentModel.DataAnnotations;
 
-public class Category
+namespace Repository.Entity;
+
+public record Category
 {
+    [Key]
+    public Guid Id { get; init; } = Guid.NewGuid();
+
+    public string Name { get; set; }
+
+    public ICollection<SubCateegory> SubCategory { get; set; }
 }

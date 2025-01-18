@@ -1,8 +1,11 @@
-﻿namespace Repository.Entity;
+﻿using System.ComponentModel.DataAnnotations;
 
-public class User
+namespace Repository.Entity;
+
+public record User
 {
-    public Guid Id { get; init; }
-    public string Email { get; set; }
+    [Key]
+    public Guid Id { get; init; } = Guid.NewGuid();
+    public string Email { get; init; }
     public string Password { get; set; }
 }
