@@ -1,6 +1,6 @@
 ﻿using AppService.Domain;
-using AppService.Domain.Account.Request;
-using AppService.Domain.Account.Validator;
+using AppService.Domain.Security.Request;
+using AppService.Domain.Security.Validator;
 using AppService.Extension;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

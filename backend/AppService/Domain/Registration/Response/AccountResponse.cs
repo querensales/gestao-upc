@@ -10,6 +10,10 @@ public record AccountResponse
 
     public static AccountResponse FromEntity(Account entity)
     {
-
+        return new AccountResponse
+        {
+            Id = entity.Id,
+            Name = entity.Name
+        };
     }
 }

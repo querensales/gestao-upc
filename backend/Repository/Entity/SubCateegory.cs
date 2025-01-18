@@ -1,7 +1,10 @@
-﻿namespace Repository.Entity;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Repository.Entity;
 
 public record SubCateegory
 {
+    [Key]
     public Guid Id { get; set; }
 
     public string Name { get; set; }

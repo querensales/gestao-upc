@@ -2,7 +2,7 @@
 using FluentValidation;
 using Repository;
 
-namespace AppService.Domain.Account.Validator;
+namespace AppService.Domain.Security.Validator;
 
 public class AddUserValidator: AbstractValidator<AddUserRequest>
 {

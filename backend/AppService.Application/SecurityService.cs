@@ -3,7 +3,7 @@ using System.Security.Claims;
 using System.Text;
 using AppService.Domain;
 using AppService.Domain.Security.Request;
-using AppService.Domain.Account.Validator;
+using AppService.Domain.Security.Validator;
 using AppService.Extension;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;

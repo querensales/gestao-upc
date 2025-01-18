@@ -3,6 +3,7 @@ using AppService.Domain.Registration.Request;
 using AppService.Domain.Registration.Response;
 using Microsoft.EntityFrameworkCore;
 using Repository;
+using Repository.Entity;
 
 namespace AppService.Application;
 
@@ -14,19 +15,33 @@ public class RegistrationService : IRegistrationService
         _appDbContext = appDbContext;
     }
 
-    public Task AddAccountAsync(AddAccountRequest request)
+    public async Task AddAccountAsync(AddAccountRequest request)
     {
-        throw new NotImplementedException();
+        await _appDbContext.Account.AddAsync(new Account
+        {
+            Active = true,
+            Name = request.Name,
+        });
+
+        await _appDbContext.SaveChangesAsync();
     }
 
-    public Task AddCategoryAsync(AddCategoryRequest request)
+    public async Task AddCategoryAsync(AddCategoryRequest request)
     {
-        throw new NotImplementedException();
+        await _appDbContext.Category.AddAsync(new Category
+        {
+            Name = request.Name,
+        });
     }
 
-    public Task AddCreditCardAsync(AddCreditCardRequest request)
+    public async Task AddCreditCardAsync(AddCreditCardRequest request)
     {
-        throw new NotImplementedException();
+        await _appDbContext.CreditCard.AddAsync(new CreditCard
+        {
+            Name = request.Name
+        });
+
+        await _appDbContext.SaveChangesAsync();
     }
 
     public async Task<List<AccountResponse>> GetAccountsAsync()
