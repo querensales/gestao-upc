@@ -1,5 +1,5 @@
 ﻿namespace Repository.Entity;
 
-internal class Record
+public record Record
 {
 }

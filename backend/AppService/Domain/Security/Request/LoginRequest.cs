@@ -1,4 +1,4 @@
-﻿namespace AppService.Domain.Account.Request;
+﻿namespace AppService.Domain.Security.Request;
 
 public record LoginRequest
 {

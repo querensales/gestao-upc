@@ -1,8 +1,8 @@
 ﻿namespace Repository.Entity;
 
-public class User
+public record User
 {
     public Guid Id { get; init; }
-    public string Email { get; set; }
+    public string Email { get; init; }
     public string Password { get; set; }
 }

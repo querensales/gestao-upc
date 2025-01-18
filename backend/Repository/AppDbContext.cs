@@ -10,4 +10,9 @@ public class AppDbContext : DbContext
     }
 
     public DbSet<User> User { get; set; }
+    public DbSet<Account> Account { get; set; }
+    public DbSet<Category> Category { get; set; }
+    public DbSet<CreditCard> CreditCard { get; set; }
+    public DbSet<Record> Record { get; set; }
+    public DbSet<SubCateegory> SubCategory { get; set; }
 }

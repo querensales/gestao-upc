@@ -1,4 +1,4 @@
-﻿using AppService.Domain.Account.Request;
+﻿using AppService.Domain.Security.Request;
 
 namespace AppService.Domain;
 

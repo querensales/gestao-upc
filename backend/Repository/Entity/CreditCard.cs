@@ -1,5 +1,7 @@
 ﻿namespace Repository.Entity;
 
-internal class CreditCard
+public record CreditCard
 {
+    public Guid Id { get; set; }
+    public string Name { get; set; }
 }

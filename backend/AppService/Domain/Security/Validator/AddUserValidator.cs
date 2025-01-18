@@ -1,4 +1,4 @@
-﻿using AppService.Domain.Account.Request;
+﻿using AppService.Domain.Security.Request;
 using FluentValidation;
 using Repository;
 
@@ -22,6 +22,7 @@ public class AddUserValidator: AbstractValidator<AddUserRequest>
             });
 
         RuleFor(u => u.Password)
-            .NotEmpty().WithMessage("Campo email é obrigatório");
+            .NotEmpty().WithMessage("Campo email é obrigatório")
+            .Equal(x => x.RepeatPassword, StringComparer.OrdinalIgnoreCase).WithMessage("A senha e a confirmação de senha não correspondem.");
     }
 }
