@@ -46,6 +46,7 @@ services:
             ConnectionStrings__DefaultConnection: Server=sqlserver_container;Database=gestaoupc;User Id=sa;Password=${SA_PASSWORD};TrustServerCertificate=True
             RABBITMQ_HOST: rabbitmq
             ASPNETCORE_ENVIRONMENT: Development
+            Jwt__Key: dW7Dp8OjbyBwcm9mw6l0aWNhIGNodXJjaA==
         restart: on-failure
         
 volumes:
