@@ -20,6 +20,12 @@ export class LoginComponent {
     this.objetoLogin.email = this.valorDoEmail;
     this.objetoLogin.password = this.valorDaSenha;
     console.log(this.objetoLogin)
+
+    if (this.objetoLogin.email === '') {
+      alert('Email inválido');
+    } else if (this.objetoLogin.password === '') {
+      alert('Senha inválida');
+    }
   }
 
 }
