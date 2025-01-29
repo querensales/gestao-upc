@@ -24,6 +24,7 @@ public class RegistrationService : IRegistrationService
         });
 
         await _appDbContext.SaveChangesAsync();
+
     }
 
     public async Task AddCategoryAsync(AddCategoryRequest request)
@@ -32,6 +33,8 @@ public class RegistrationService : IRegistrationService
         {
             Name = request.Name,
         });
+        await _appDbContext.SaveChangesAsync();
+
     }
 
     public async Task AddCreditCardAsync(AddCreditCardRequest request)
