@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import LoginModel from '../../models/login.model';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { AccountService } from '../../services/account.service';
 
 
 @Component({
@@ -11,21 +12,23 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  constructor() { }
-  objetoLogin: LoginModel = new LoginModel();
+  constructor(private accountService: AccountService) { }
+  model: LoginModel = new LoginModel();
   valorDoEmail = '';
   valorDaSenha: string = '';
 
   entrar(): void {
-    this.objetoLogin.email = this.valorDoEmail;
-    this.objetoLogin.password = this.valorDaSenha;
-    console.log(this.objetoLogin)
+    this.model.email = this.valorDoEmail;
+    this.model.password = this.valorDaSenha;
 
-    if (this.objetoLogin.email === '') {
-      alert('Email inválido');
-    } else if (this.objetoLogin.password === '') {
-      alert('Senha inválida');
-    }
+    this.accountService.login(this.model).subscribe(
+      (response) => {
+        console.log(response);
+      },
+      (error) => {
+        console.log(error.error);
+      }
+    );
   }
 
 }
