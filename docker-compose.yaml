@@ -1,53 +1,37 @@
 version: "3.9"
 
 services:
-    sqlserver:
-        image: mcr.microsoft.com/mssql/server:2022-latest
-        container_name: sqlserver_container
+    postgres:
+        image: postgres:latest
+        container_name: postgres_container
         ports:
-            - "1433:1433"
+            - "5432:5432"
         environment:
-            SA_PASSWORD: ${SA_PASSWORD}
-            ACCEPT_EULA: "Y"
+            POSTGRES_USER: dba
+            POSTGRES_PASSWORD: ${SA_PASSWORD}
+            POSTGRES_DB: db
         volumes:
-            - sql_data:/var/opt/mssql
-            - ./db:/docker-entrypoint-initdb.d
-            - ./db:/tmp
-
-    mssqltools:
-        image: mcr.microsoft.com/mssql-tools:latest
-        container_name: mssqltools_container
-        depends_on:
-          - sqlserver
-        volumes:
-            - ./db/init.sql:/tmp/init.sql                 # Monta os scripts no contêiner
-            - ./db/init.sh:/tmp/init.sh
-        entrypoint: /bin/bash
-        command: /tmp/init.sh
+            - postgres_data:/var/lib/postgresql/data
+        
+        
     rabbitmq:
         image: rabbitmq:3-management
         container_name: rabbitmq_container
         ports:
             - "5672:5672"
             - "15672:15672"
-        # healthcheck:
-            # test: ["CMD", "rabbitmqctl", "status"]
-            # interval: 30s
-            # timeout: 10s
-            # retries: 5
-            # start_period: 20s
-    
+        
     api:
         build: ./backend
         container_name: api_container
         ports:
             - "5223:5223"
         environment:
-            ConnectionStrings__DefaultConnection: Server=sqlserver_container;Database=gestaoupc;User Id=sa;Password=${SA_PASSWORD};TrustServerCertificate=True
+            ConnectionStrings__DefaultConnection: "User ID=dba;Password=${SA_PASSWORD};Host=postgres;Port=5432;Database=db;Pooling=true;Connection Lifetime=0;"
             RABBITMQ_HOST: rabbitmq
             ASPNETCORE_ENVIRONMENT: Development
             Jwt__Key: dW7Dp8OjbyBwcm9mw6l0aWNhIGNodXJjaA==
         restart: on-failure
         
 volumes:
-    sql_data:
+  postgres_data:

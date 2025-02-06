@@ -27,10 +27,22 @@ public class SecurityController : ControllerBase
     [AllowAnonymous]
     public async Task<IActionResult> Login([FromBody] LoginRequest request)
     {
+        try
+        {
+            var token = await _securityService.SignIn(request);
 
-        var token = await _securityService.SignIn(request);
+            return Ok(token);
+        }
+        catch(CustomValidationException ex)
+        {
+            return BadRequest(ex.Erros);
+        }
+        catch (Exception)
+        {
 
-        return Ok(token);
+            throw;
+        }
+        
     }
 
     [HttpPost("add-user")]
