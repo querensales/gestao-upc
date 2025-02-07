@@ -23,7 +23,17 @@ public class LoginValidator : AbstractValidator<LoginRequest>
                 context.AddFailure("Email inexistente-.");
             }
         });
+
+        RuleFor(u => u.Email)
+            .NotEmpty()
+            .WithMessage("Email não foi preenchido")
+            .NotNull()
+            .WithMessage("Email não preenchido");
+
+        RuleFor(u => u.Password)
+            .NotEmpty()
+            .WithMessage("Senha não preenchida")
+            .NotNull()
+            .WithMessage("Senha não preenchida");
     }
-
-
 }

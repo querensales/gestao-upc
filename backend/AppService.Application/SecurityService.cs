@@ -56,15 +56,15 @@ public class SecurityService : ISecurityService
 
     public async ValueTask<string> SignIn(LoginRequest loginRequest)
     {
+        var validate = new LoginValidator(_appDbContext).Validate(loginRequest);
+        if (!validate.IsValid)
+            throw new CustomValidationException(validate.Errors);
+
         var user = await _appDbContext
                             .User
                             .SingleOrDefaultAsync(u =>
                                 u.Email == loginRequest.Email &&
                                 u.Password == loginRequest.Password);
-        if (user == null)
-        {
-            throw new NullReferenceException("Usuário não encontrado");
-        }
 
         return GenerateJwtToken(user.Email);
     }
