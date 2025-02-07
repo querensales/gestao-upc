@@ -7,12 +7,21 @@ public class AppDbContext : DbContext
 {
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
     {
+        AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+        AppContext.SetSwitch("Npgsql.DisableDateTimeInfinityConversions", true);
     }
 
-    public DbSet<User> User { get; set; }
-    public DbSet<Account> Account { get; set; }
-    public DbSet<Category> Category { get; set; }
-    public DbSet<CreditCard> CreditCard { get; set; }
-    public DbSet<Record> Record { get; set; }
-    public DbSet<SubCateegory> SubCategory { get; set; }
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.UseLazyLoadingProxies();
+
+        base.OnConfiguring(optionsBuilder);
+    }
+
+    public virtual DbSet<User> User { get; set; }
+    public virtual DbSet<Account> Account { get; set; }
+    public virtual DbSet<Category> Category { get; set; }
+    public virtual DbSet<CreditCard> CreditCard { get; set; }
+    public virtual DbSet<Record> Record { get; set; }
+    public virtual DbSet<SubCateegory> SubCategory { get; set; }
 }
