@@ -21,7 +21,7 @@ builder.Services.AddScoped<IRegistrationService, RegistrationService>();
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(connectionString));
+    options.UseNpgsql(connectionString));
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
@@ -41,6 +41,7 @@ var app = builder.Build();
 // Aplicando migrações
 using (var scope = app.Services.CreateScope())
 {
+    await Task.Delay(TimeSpan.FromSeconds(30));
     var services = scope.ServiceProvider;
 
     try

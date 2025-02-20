@@ -9,5 +9,5 @@ public record Category
 
     public string Name { get; set; }
 
-    public ICollection<SubCateegory> SubCategory { get; set; }
+    public virtual ICollection<SubCateegory> SubCategory { get; set; }
 }

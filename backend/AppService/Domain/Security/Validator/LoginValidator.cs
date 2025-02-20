@@ -1,4 +1,5 @@
 ﻿using AppService.Domain.Security.Request;
+using AppService.Extension;
 using FluentValidation;
 using Repository;
 
@@ -7,7 +8,7 @@ namespace AppService.Domain.Security.Validator;
 public class LoginValidator : AbstractValidator<LoginRequest>
 {
     private readonly AppDbContext _appDbContext;
-    public LoginValidator(AppDbContext appDbContext)
+    public LoginValidator(AppDbContext appDbContext) 
     {
         _appDbContext = appDbContext;
 
@@ -26,14 +27,37 @@ public class LoginValidator : AbstractValidator<LoginRequest>
 
         RuleFor(u => u.Email)
             .NotEmpty()
-            .WithMessage("Email não foi preenchido")
+            .WithMessage("Email está vazio")
             .NotNull()
-            .WithMessage("Email não preenchido");
+            .WithMessage("Email nulo");
 
         RuleFor(u => u.Password)
             .NotEmpty()
-            .WithMessage("Senha não preenchida")
+            .WithMessage("Senha vazia")
             .NotNull()
-            .WithMessage("Senha não preenchida");
+            .WithMessage("Senha nula");
+
+        RuleFor(u => u)
+            .Custom((u, context) =>
+            {
+                if (!UserIsValid(u.Email, u.Password))
+                {
+                    context.AddFailure("Usuário ou senha inválido");
+                }
+            });
+    }
+
+    private bool UserIsValid(string email, string password)
+    {
+        var employee =
+             _appDbContext
+                    .User
+                    .SingleOrDefault(e => e.Email == email);
+        if (employee == null)
+        {
+            return false;
+        }
+
+        return JwtExtensions.VerifyPassword(password, employee.Password);
     }
 }

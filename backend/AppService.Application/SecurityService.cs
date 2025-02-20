@@ -48,7 +48,7 @@ public class SecurityService : ISecurityService
     
         if (user != null) 
         {
-            user.Password = "123456";
+            user.Password = JwtExtensions.HashPassword("123456");
             _appDbContext.Update(user);
             await _appDbContext.SaveChangesAsync();
         }
@@ -56,15 +56,17 @@ public class SecurityService : ISecurityService
 
     public async ValueTask<string> SignIn(LoginRequest loginRequest)
     {
+        loginRequest.Password = JwtExtensions.HashPassword(loginRequest.Password);
         var validate = new LoginValidator(_appDbContext).Validate(loginRequest);
         if (!validate.IsValid)
+        {
             throw new CustomValidationException(validate.Errors);
+        }
 
         var user = await _appDbContext
                             .User
                             .SingleOrDefaultAsync(u =>
-                                u.Email == loginRequest.Email &&
-                                u.Password == loginRequest.Password);
+                                u.Email == loginRequest.Email);
 
         return GenerateJwtToken(user.Email);
     }
@@ -75,17 +77,14 @@ public class SecurityService : ISecurityService
         var claims = new List<Claim>
         {
             new Claim(ClaimTypes.Name, username),
-            // Adicione outras claims conforme necessário (ex: roles)
         };
 
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
         var token = new JwtSecurityToken(
-            //issuer: _configuration["Jwt:Issuer"],
-            //audience: _configuration["Jwt:Audience"],
             claims: claims,
-            expires: DateTime.Now.AddHours(1), // Tempo de expiração do token
+            expires: DateTime.Now.AddHours(1), 
             signingCredentials: creds
         );
 
