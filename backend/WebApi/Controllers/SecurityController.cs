@@ -9,6 +9,7 @@ using Repository;
 namespace WebApi.Controllers;
 
 [Route("api/[controller]")]
+[Authorize]
 [ApiController]
 public class SecurityController : ControllerBase
 {
@@ -23,7 +24,7 @@ public class SecurityController : ControllerBase
     }
 
 
-    [HttpPost]
+    [HttpPost("login")]
     [AllowAnonymous]
     public async Task<IActionResult> Login([FromBody] LoginRequest request)
     {

@@ -3,13 +3,13 @@ version: "3.9"
 services:
     postgres:
         image: postgres:latest
-        container_name: postgres_container
+        container_name: gestao-upc-db
         ports:
             - "5432:5432"
         environment:
             POSTGRES_USER: dba
             POSTGRES_PASSWORD: ${SA_PASSWORD}
-            POSTGRES_DB: db
+            POSTGRES_DB: gestao-upc-db
         volumes:
             - postgres_data:/var/lib/postgresql/data
         
@@ -27,7 +27,7 @@ services:
         ports:
             - "5223:5223"
         environment:
-            ConnectionStrings__DefaultConnection: "User ID=dba;Password=${SA_PASSWORD};Host=postgres;Port=5432;Database=db;Pooling=true;Connection Lifetime=0;"
+            ConnectionStrings__DefaultConnection: "User ID=dba;Password=${SA_PASSWORD};Host=postgres;Port=5432;Database=gestao-upc-db;Pooling=true;Connection Lifetime=0;"
             RABBITMQ_HOST: rabbitmq
             ASPNETCORE_ENVIRONMENT: Development
             Jwt__Key: dW7Dp8OjbyBwcm9mw6l0aWNhIGNodXJjaA==
