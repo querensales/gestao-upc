@@ -56,7 +56,6 @@ public class SecurityService : ISecurityService
 
     public async ValueTask<string> SignIn(LoginRequest loginRequest)
     {
-        loginRequest.Password = JwtExtensions.HashPassword(loginRequest.Password);
         var validate = new LoginValidator(_appDbContext).Validate(loginRequest);
         if (!validate.IsValid)
         {
