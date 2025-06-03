@@ -12,10 +12,6 @@ public class LoginValidator : AbstractValidator<LoginRequest>
     {
         _appDbContext = appDbContext;
 
-        RuleFor(l => l.Email)
-            .EmailAddress()
-            .WithMessage("email inválido");
-
         RuleFor(u => u.Email)
         .Custom((Email, context) =>
         {
