@@ -1,3 +1,7 @@
 export default function Autenticacao() {
-  return <>LOgin</>;
+  return(
+    <div>
+        
+    </div>
+  );
 }
