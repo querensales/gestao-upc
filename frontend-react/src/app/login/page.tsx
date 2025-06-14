@@ -16,8 +16,6 @@ const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (errorInfo) => {
   console.log('Failed:', errorInfo);
 };
 
-
-
 export default function Autenticacao() {
 
   return (
