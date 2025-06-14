@@ -1,6 +1,7 @@
 'use client'
 
 import { Button, Checkbox, Col, Form, FormProps, Input, Row } from "antd";
+import styles from './page.module.css'
 
 type FieldType = {
   username?: string;
@@ -24,6 +25,7 @@ export default function Autenticacao() {
         <Col span={8}></Col>
         <Col span={8}>
           <Form
+          className={styles.margem}
             name="basic"
             labelCol={{ span: 8 }}
             wrapperCol={{ span: 16 }}
