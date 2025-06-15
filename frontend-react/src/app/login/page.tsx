@@ -4,17 +4,16 @@ import { Button, Checkbox, Col, Form, FormProps, Input, Row } from "antd";
 import styles from './page.module.css'
 
 type FieldType = {
-  username?: string;
+  email?: string;
   password?: string;
-  remember?: string;
 };
 
 const onFinish: FormProps<FieldType>['onFinish'] = (values) => {
-  console.log('Success:', values);
+  console.log('Sucesso:', values);
 };
 
 const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (errorInfo) => {
-  console.log('Failed:', errorInfo);
+  console.log('Falha:', errorInfo);
 };
 
 export default function Autenticacao() {
@@ -37,7 +36,7 @@ export default function Autenticacao() {
           >
             <Form.Item<FieldType>
               label="Nome de Usuário"
-              name="username"
+              name="email"
               rules={[{ required: true, message: 'Preencha o usuário corretamente!' }]}
             >
               <Input />
@@ -49,10 +48,6 @@ export default function Autenticacao() {
               rules={[{ required: true, message: 'Preencha a senha corretamente!' }]}
             >
               <Input.Password />
-            </Form.Item>
-
-            <Form.Item<FieldType> name="remember" valuePropName="checked" label={null}>
-              <Checkbox>Lembrar-me</Checkbox>
             </Form.Item>
 
             <Form.Item label={null}>
