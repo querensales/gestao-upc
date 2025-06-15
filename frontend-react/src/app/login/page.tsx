@@ -1,18 +1,16 @@
 'use client'
 
-import { Button, Checkbox, Col, Form, FormProps, Input, Row } from "antd";
+import { Button, Col, Form, FormProps, Input, Row } from "antd";
 import styles from './page.module.css'
+import SigninModel from "@/models/security/signin.model";
+import { SecurityService } from "@/services/securityService";
 
-type FieldType = {
-  email?: string;
-  password?: string;
+
+const onFinish: FormProps<SigninModel>['onFinish'] = (values) => {
+  SecurityService.signin(values)
 };
 
-const onFinish: FormProps<FieldType>['onFinish'] = (values) => {
-  console.log('Sucesso:', values);
-};
-
-const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (errorInfo) => {
+const onFinishFailed: FormProps<SigninModel>['onFinishFailed'] = (errorInfo) => {
   console.log('Falha:', errorInfo);
 };
 
@@ -34,7 +32,7 @@ export default function Autenticacao() {
             onFinishFailed={onFinishFailed}
             autoComplete="off"
           >
-            <Form.Item<FieldType>
+            <Form.Item<SigninModel>
               label="Nome de Usuário"
               name="email"
               rules={[{ required: true, message: 'Preencha o usuário corretamente!' }]}
@@ -42,7 +40,7 @@ export default function Autenticacao() {
               <Input />
             </Form.Item>
 
-            <Form.Item<FieldType>
+            <Form.Item<SigninModel>
               label="Senha"
               name="password"
               rules={[{ required: true, message: 'Preencha a senha corretamente!' }]}
