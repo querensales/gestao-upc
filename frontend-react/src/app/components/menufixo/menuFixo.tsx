@@ -2,7 +2,45 @@ import Link from 'next/link';
 import Styles from './menuFixo.module.css';
 import { SettingOutlined, BellOutlined } from '@ant-design/icons';
 import { Avatar } from 'antd';
+import type { MenuProps } from 'antd';
+import { Menu } from 'antd';
 import Image from 'next/image';
+
+const itemsConfiguracoes: MenuProps['items'] = [
+    {
+        label: '',
+        key: 'SubMenu',
+        icon: <SettingOutlined />,
+        children: [
+            {
+                type: 'group',
+                label: 'Categorias',
+                children: [
+                    { label: 'Opção 1', key: 'setting:1' },
+                    { label: 'Opção 2', key: 'setting:2' },
+                ],
+            },
+
+        ],
+    },
+];
+const itemsNotificacoes: MenuProps['items'] = [
+    {
+        label: '',
+        key: 'Notificacoes',
+        icon: <BellOutlined />,
+        children: [
+            {
+                type: 'group',
+                label: 'Alertas',
+                children: [
+                    { label: 'Aviso 1', key: 'alerta:1' },
+                    { label: 'Aviso 2', key: 'alerta:2' },
+                ],
+            },
+        ],
+    },
+];
 
 
 export default function MenuFixo() {
@@ -35,10 +73,19 @@ export default function MenuFixo() {
             </nav>
             <nav className={Styles.config}>
                 <ul>
+                    <Menu className={Styles.menuConfig}
+                        mode="horizontal"
+                        items={itemsConfiguracoes}
+                        theme="dark"
+                        style={{ background: 'transparent', borderBottom: 'none' }}
+                    />
                     <li>
-                        <SettingOutlined className={Styles.icon} />
-                    </li>
-                    <li><BellOutlined className={Styles.icon} />
+                        <Menu
+                            mode="horizontal"
+                            items={itemsNotificacoes}
+                            theme="dark"
+                            style={{ background: 'transparent', borderBottom: 'none' }}
+                        />
                     </li>
                     <li>
                         <Avatar
