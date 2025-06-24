@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import Styles from './menuFixo.module.css';
+import { SettingOutlined, BellOutlined } from '@ant-design/icons';
+import { Avatar } from 'antd';
 
 export default function MenuFixo() {
     return (
@@ -24,9 +26,16 @@ export default function MenuFixo() {
             </nav>
             <nav className={Styles.config}>
                 <ul>
-                    <li>configurações</li>
-                    <li>alertas</li>
-                    <li>conta</li>
+                    <li>
+                        <SettingOutlined className={Styles.icon} /></li>
+                    <li><BellOutlined className={Styles.icon} /></li>
+                    <li>
+                        <Avatar
+                            src="https://i.pravatar.cc/44"
+                            size="medium"
+                            alt="Foto do usuário"
+                        />
+                    </li>
                 </ul>
             </nav>
 

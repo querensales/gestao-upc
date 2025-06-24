@@ -33,14 +33,13 @@
     color: #fff;
 }
 
-
-
 .config ul {
     display: flex;
     list-style: none;
     gap: 1rem;
     padding: 0;
     margin: 0;
+    align-items: center;
 }
 
 .config li {
