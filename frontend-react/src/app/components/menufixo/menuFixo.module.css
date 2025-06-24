@@ -1,5 +1,5 @@
 .cabecalho {
-    background-color: #e97027;
+    background-color: #f1965d;
     display: grid;
     grid-template-columns: auto 1fr auto;
     align-items: center;
@@ -33,14 +33,13 @@
     color: #fff;
 }
 
-
-
 .config ul {
     display: flex;
     list-style: none;
     gap: 1rem;
     padding: 0;
     margin: 0;
+    align-items: center;
 }
 
 .config li {
