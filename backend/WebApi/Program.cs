@@ -11,6 +11,15 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CorsLivre", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -29,16 +38,16 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         options.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateIssuer = true, // Valida o emissor do token
-            ValidateAudience = true, // Valida o público do token
+            ValidateAudience = true, // Valida o pï¿½blico do token
             ValidateLifetime = true, // Valida o tempo de vida do token
             ValidateIssuerSigningKey = true, // Valida a chave de assinatura
             //ValidIssuer = builder.Configuration["Jwt:Issuer"], // Emissor configurado
-            //ValidAudience = builder.Configuration["Jwt:Audience"], // Público configurado
+            //ValidAudience = builder.Configuration["Jwt:Audience"], // Pï¿½blico configurado
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])) // Chave de assinatura
         };
     });
 var app = builder.Build();
-// Aplicando migrações
+// Aplicando migraï¿½ï¿½es
 using (var scope = app.Services.CreateScope())
 {
     await Task.Delay(TimeSpan.FromSeconds(30));
@@ -52,8 +61,8 @@ using (var scope = app.Services.CreateScope())
     catch (Exception ex)
     {
         var logger = services.GetRequiredService<ILogger<Program>>();
-        logger.LogError(ex, "Ocorreu um erro ao aplicar as migrações.");
-        // Tratar a exceção adequadamente. Em produção, você provavelmente deveria abortar a inicialização.
+        logger.LogError(ex, "Ocorreu um erro ao aplicar as migraï¿½ï¿½es.");
+        // Tratar a exceï¿½ï¿½o adequadamente. Em produï¿½ï¿½o, vocï¿½ provavelmente deveria abortar a inicializaï¿½ï¿½o.
     }
 }
 
@@ -65,13 +74,15 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.UseAuthentication(); // Habilita autenticação
-app.UseAuthorization(); // Habilita autorização
+app.UseCors("CorsLivre");
+app.UseAuthentication(); // Habilita autenticaï¿½ï¿½o
+app.UseAuthorization(); // Habilita autorizaï¿½ï¿½o
 
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
 app.MapControllers();
+
 
 app.Run();
