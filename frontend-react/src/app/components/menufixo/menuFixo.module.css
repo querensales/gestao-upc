@@ -1,0 +1,51 @@
+.cabecalho {
+    background-color: #e97027;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    padding: 1rem 2rem;
+    gap: 2rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.link {
+    font-size: 1.1rem;
+    text-decoration: none;
+    color: rgba(253, 251, 251, 0.795);
+    font-weight: 500;
+    transition: opacity 0.2s ease;
+
+}
+
+.link:hover {
+    opacity: 1;
+    color: #fff;
+}
+
+
+
+.config ul {
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+    padding: 0;
+    margin: 0;
+}
+
+.config li {
+    color: rgba(253, 251, 251, 0.795) ;
+    cursor: pointer;
+    font-weight: 500;
+    transition: color 0.2s;
+}
