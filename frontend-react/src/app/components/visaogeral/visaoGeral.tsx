@@ -1,10 +1,11 @@
+import AcessoRapido from "../acessoRapido/acessoRapido";
 import BoasVindas from "../boasVindas/boasVindas";
-
+import Styles from "./visaoGeral.module.css"
 export default function VisaoGeral() {
     return (
-        <div>
+        <div className={Styles.container}>
             <BoasVindas />
-            container com o despesas e receitas mensais e acesso rápido
+            <AcessoRapido />
         </div>
     );
 }

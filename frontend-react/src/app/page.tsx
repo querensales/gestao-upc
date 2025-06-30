@@ -1,5 +1,5 @@
 import React from 'react';
-import {Col, Row, Space } from 'antd';
+import {Col, Row } from 'antd';
 
 const Home = () => (
 <>
