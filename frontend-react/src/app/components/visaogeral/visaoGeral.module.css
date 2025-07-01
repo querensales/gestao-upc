@@ -1,0 +1,9 @@
+.container{
+    display: flex;
+    justify-content: space-around;
+    height:200px ;
+    background-color: white;
+    width: 1079px;
+    margin: 50px auto;
+    border-radius: 10px;
+}

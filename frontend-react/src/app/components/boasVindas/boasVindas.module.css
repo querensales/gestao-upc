@@ -1,0 +1,61 @@
+.section{
+    width: 539,5px;
+   margin-bottom: 24px;
+    padding: 24px 32px;
+}
+
+.ola {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.ola p {
+  font-size: 1.1rem;
+  color: #555;
+  margin: 0;
+}
+
+.ola h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+}
+
+.mesAtual {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  justify-content: space-between;
+}
+
+.mesAtual > div {
+  text-align: center;
+  display: block;
+}
+
+.mesAtual p:first-child {
+  font-size: 1rem;
+  color: #64748b;
+  margin-bottom: 8px;
+}
+
+.mesAtual p:last-child {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #059669;
+}
+
+.mesAtual > :nth-child(3) p:last-child {
+  color: #dc2626;
+}
+
+/* Estilo apenas para o divisor */
+.divisor {
+  color: #cbd5e1;
+  font-size: 2rem;
+  margin: 0 8px;
+  user-select: none;
+}

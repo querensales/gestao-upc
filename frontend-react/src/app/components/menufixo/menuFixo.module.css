@@ -1,11 +1,17 @@
 .cabecalho {
     background-color: #f1965d;
+    border-bottom: 1px solid #ddd;
+    padding: 1rem 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
     display: grid;
     grid-template-columns: auto 1fr auto;
     align-items: center;
-    padding: 1rem 2rem;
     gap: 2rem;
-    border-bottom: 1px solid #ddd;
+    padding: 0 2rem;
 }
 
 .logo {
@@ -36,14 +42,13 @@
 .config ul {
     display: flex;
     list-style: none;
-    gap: 1rem;
     padding: 0;
     margin: 0;
     align-items: center;
 }
 
 .config li {
-    color: rgba(253, 251, 251, 0.795) ;
+    color: rgba(253, 251, 251, 0.795);
     cursor: pointer;
     font-weight: 500;
     transition: color 0.2s;
