@@ -16,7 +16,7 @@ export default function boasVindas() {
                 <span className={Styles.divisor}>|</span>
                 <div className={Styles.mesAtual}>
                     <p>Despesas no mês atual</p>
-                    <p>R$ 5.000,00</p>
+                    <p>R$ - 5.000,00</p>
                 </div>
             </div>
         </section>

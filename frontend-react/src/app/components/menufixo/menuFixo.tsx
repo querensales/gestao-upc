@@ -54,7 +54,7 @@ export default function MenuFixo() {
                     />
                 </div>
                 <nav className={Styles.menu}>
-                    <Link href="/" className={Styles.link}>
+                    <Link href="/home" className={Styles.link}>
                         visão geral
                     </Link>
                     <Link href="/" className={Styles.link}>
