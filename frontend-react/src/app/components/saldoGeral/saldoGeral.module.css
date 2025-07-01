@@ -1,0 +1,81 @@
+.container {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    max-width: 539px;
+    
+}
+
+.saldoGeral {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+}
+
+.label {
+    color: #888;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+.valor {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #1a7f37;
+}
+
+.moeda {
+    font-size: 1rem;
+    margin-right: 0.25rem;
+    color: #888;
+}
+
+.contasBox {
+    width: 100%;
+}
+
+.tituloContas {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.listaContas {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.itemConta {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0;
+    font-size: 1rem;
+    color: #444;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.itemConta:last-child {
+    border-bottom: none;
+}
+
+.iconeConta {
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+}
+
+/* Cores específicas */
+.coraIcone {
+    color: #ff2d87;
+}
+
+.nubankIcone {
+    color: #820ad1;
+}
+
+.dinheiroIcone {
+    color: #1a7f37;
+}
