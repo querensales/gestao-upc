@@ -16,14 +16,17 @@ export default function SaldoGeral() {
                     <li className={Styles.itemConta}>
                         <BankOutlined className={`${Styles.iconeConta} ${Styles.coraIcone}`} />
                         <span>Cora</span>
+                        <p className={Styles.valorConta}>R$ 2.000,00</p>
                     </li>
                     <li className={Styles.itemConta}>
                         <BankOutlined className={`${Styles.iconeConta} ${Styles.nubankIcone}`} />
                         <span>Nubank</span>
+                       <p className={Styles.valorConta}>R$ 2.000,00</p>
                     </li>
                     <li className={Styles.itemConta}>
                         <MoneyCollectOutlined className={`${Styles.iconeConta} ${Styles.dinheiroIcone}`} />
                         <span>Dinheiro</span>
+                       <p className={Styles.valorConta}>R$ 2.000,00</p>
                     </li>
                 </ul>
             </div>
