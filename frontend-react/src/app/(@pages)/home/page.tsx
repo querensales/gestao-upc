@@ -4,7 +4,7 @@ import VisaoGeral from "@/app/components/visaogeral/visaoGeral";
 
 export default function HomePagina() {
     return (
-        <main >
+        <main style={{ padding: "24px" }}>
             <VisaoGeral />
             <SaldoGeral />
         </main>
