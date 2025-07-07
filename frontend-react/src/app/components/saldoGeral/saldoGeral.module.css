@@ -69,6 +69,12 @@
     vertical-align: middle;
 }
 
+.eyeOutlined, .eyeInvisibleOutlined {
+    color: #2f303f;
+    padding: 0 8px;
+    cursor: pointer;
+}
+
 /* Cores específicas */
 .coraIcone {
     color: #ff2d87;

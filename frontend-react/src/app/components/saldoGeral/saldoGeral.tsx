@@ -20,12 +20,12 @@ export default function SaldoGeral() {
                     {mostrarSaldo ? "15.000,00" : "•••••••••"}
                     {mostrarSaldo ? (
                         <EyeOutlined
-                            style={{ color: "#2f303f", padding: "0 8px", cursor: "pointer" }}
+                            className={Styles.eyeOutlined}
                             onClick={VisualizarSaldo}
                         />
                     ) : (
                         <EyeInvisibleOutlined
-                            style={{ color: "#2f303f", padding: "0 8px", cursor: "pointer" }}
+                            className={Styles.eyeInvisibleOutlined}
                             onClick={VisualizarSaldo}
                         />
                     )}
