@@ -12,6 +12,7 @@
     flex-direction: column;
     align-items: flex-start;
     margin-bottom: 2rem;
+    
 }
 
 .label {
@@ -54,6 +55,7 @@
     padding: 0.5rem 0;
     font-size: 1rem;
     color: #444;
+    justify-content: space-between;
     border-bottom: 1px solid #f0f0f0;
 }
 
@@ -67,6 +69,12 @@
     vertical-align: middle;
 }
 
+.eyeOutlined, .eyeInvisibleOutlined {
+    color: #2f303f;
+    padding: 0 8px;
+    cursor: pointer;
+}
+
 /* Cores específicas */
 .coraIcone {
     color: #ff2d87;
@@ -78,4 +86,9 @@
 
 .dinheiroIcone {
     color: #1a7f37;
+}
+
+.valorConta{
+    color: #4c77d0;
+    font-weight: 700;
 }
