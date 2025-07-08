@@ -1,15 +1,31 @@
 'use client';
 
-import Styles from "./saldoGeral.module.css";
-import { BankOutlined, EyeOutlined, EyeInvisibleOutlined, MoneyCollectOutlined } from "@ant-design/icons";
-import { useState } from "react";
+import React, { useState, useEffect, useMemo } from 'react';
+import { EyeOutlined, EyeInvisibleOutlined, BankOutlined, MoneyCollectOutlined } from '@ant-design/icons';
+import Styles from './saldoGeral.module.css';
 
-export default function SaldoGeral() {
+function SaldoGeral() {
     const [mostrarSaldo, setMostrarSaldo] = useState(true);
+    const [totalSaldo, setTotalSaldo] = useState(0);
 
-    function VisualizarSaldo() {
-        setMostrarSaldo((prev) => !prev);
-    }
+    const contas = useMemo(() => [
+        { id: 1, nome: 'Cora', valor: 3000.00, icone: <BankOutlined className={`${Styles.iconeConta} ${Styles.coraIcone}`} /> },
+        { id: 2, nome: 'Nubank', valor: 2000.00, icone: <BankOutlined className={`${Styles.iconeConta} ${Styles.nubankIcone}`} /> },
+        { id: 3, nome: 'Dinheiro', valor: 2000.00, icone: <MoneyCollectOutlined className={`${Styles.iconeConta} ${Styles.dinheiroIcone}`} /> },
+    ], []);
+
+    useEffect(() => {
+        const soma = contas.reduce((acc, conta) => acc + conta.valor, 0);
+        setTotalSaldo(soma);
+    }, [contas]);
+
+    const VisualizarSaldo = () => {
+        setMostrarSaldo(!mostrarSaldo);
+    };
+
+    const formatarMoeda = (valor: number) => {
+        return valor.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    };
 
     return (
         <section className={Styles.container}>
@@ -17,7 +33,7 @@ export default function SaldoGeral() {
                 <p className={Styles.label}>Saldo geral</p>
                 <p className={Styles.valor}>
                     <span className={Styles.moeda}>R$</span>
-                    {mostrarSaldo ? "15.000,00" : "•••••••••"}
+                    {mostrarSaldo ? formatarMoeda(totalSaldo) : "•••••••••"}
                     {mostrarSaldo ? (
                         <EyeOutlined
                             className={Styles.eyeOutlined}
@@ -34,23 +50,17 @@ export default function SaldoGeral() {
             <div className={Styles.contasBox}>
                 <h2 className={Styles.tituloContas}>Minhas Contas</h2>
                 <ul className={Styles.listaContas}>
-                    <li className={Styles.itemConta}>
-                        <BankOutlined className={`${Styles.iconeConta} ${Styles.coraIcone}`} />
-                        <span>Cora</span>
-                        <p className={Styles.valorConta}>R$ 2.000,00</p>
-                    </li>
-                    <li className={Styles.itemConta}>
-                        <BankOutlined className={`${Styles.iconeConta} ${Styles.nubankIcone}`} />
-                        <span>Nubank</span>
-                        <p className={Styles.valorConta}>R$ 2.000,00</p>
-                    </li>
-                    <li className={Styles.itemConta}>
-                        <MoneyCollectOutlined className={`${Styles.iconeConta} ${Styles.dinheiroIcone}`} />
-                        <span>Dinheiro</span>
-                        <p className={Styles.valorConta}>R$ 2.000,00</p>
-                    </li>
+                    {contas.map(conta => (
+                        <li key={conta.id} className={Styles.itemConta}>
+                            {conta.icone}
+                            <span>{conta.nome}</span>
+                            <p className={Styles.valorConta}>R$ {formatarMoeda(conta.valor)}</p>
+                        </li>
+                    ))}
                 </ul>
             </div>
         </section>
     );
 }
+
+export default SaldoGeral;
