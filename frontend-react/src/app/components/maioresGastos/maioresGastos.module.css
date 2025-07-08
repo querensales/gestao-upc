@@ -3,7 +3,7 @@
     border-radius: 12px;
     padding: 2rem;
     margin-bottom: 2rem;
-    width: 520px;
+    width: 530px;
     
 }
 
@@ -77,18 +77,18 @@
 
 /* Cores específicas */
 .coraIcone {
-    color: #ff2d87;
+    color: #3a3839;
 }
 
 .nubankIcone {
-    color: #820ad1;
+    color: #0a49d1;
 }
 
 .dinheiroIcone {
-    color: #1a7f37;
+    color: #e0dd0b;
 }
 
 .valorConta{
-    color: #4c77d0;
+    color: #3a3839;
     font-weight: 700;
 }
