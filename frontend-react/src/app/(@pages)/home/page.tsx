@@ -1,3 +1,4 @@
+import ContasApagar from "@/app/components/contasApagar/contasApagar";
 import Style from "./page.module.css";
 import MaioresGastos from "@/app/components/maioresGastos/maioresGastos";
 import SaldoGeral from "@/app/components/saldoGeral/saldoGeral";
@@ -11,6 +12,7 @@ export default function HomePagina() {
             <section className={Style.section}>
                 <SaldoGeral />
                 <MaioresGastos />
+                <ContasApagar />
             </section>
             
         </main>
