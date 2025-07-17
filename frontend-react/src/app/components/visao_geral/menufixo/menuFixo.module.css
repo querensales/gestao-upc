@@ -39,17 +39,39 @@
     color: #fff;
 }
 
-.config ul {
+.config {
     display: flex;
-    list-style: none;
-    padding: 0;
-    margin: 0;
     align-items: center;
+    gap: 1.2rem;
 }
 
+/* Remove estilos antigos que afetavam ul/li */
+.config ul,
 .config li {
-    color: rgba(253, 251, 251, 0.795);
-    cursor: pointer;
+    all: unset;
+}
+
+/* Estilize o menu do Ant Design */
+.menuConfig .ant-menu,
+.menuConfig .ant-menu-overflow {
+    background: transparent !important;
+    border-bottom: none !important;
+}
+
+.menuConfig .ant-menu-item,
+.menuConfig .ant-menu-submenu-title {
+    color: rgba(253, 251, 251, 0.795) !important;
     font-weight: 500;
     transition: color 0.2s;
+}
+
+.menuConfig .ant-menu-item:hover,
+.menuConfig .ant-menu-submenu-title:hover {
+    color: #fff !important;
+}
+
+/* Avatar */
+.ant-avatar {
+    border: 2px solid #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }

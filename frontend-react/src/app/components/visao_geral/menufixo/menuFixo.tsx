@@ -71,29 +71,24 @@ export default function MenuFixo() {
                     </Link>
                 </nav>
                 <nav className={Styles.config}>
-                    <ul>
-                        <Menu className={Styles.menuConfig}
-                            mode="horizontal"
-                            items={itemsConfiguracoes}
-                            theme="dark"
-                            style={{ background: 'transparent', borderBottom: 'none' }}
-                        />
-                        <li>
-                            <Menu
-                                mode="horizontal"
-                                items={itemsNotificacoes}
-                                theme="dark"
-                                style={{ background: 'transparent', borderBottom: 'none' }}
-                            />
-                        </li>
-                        <li>
-                            <Avatar
-                                src="https://i.pravatar.cc/40"
-                                size={44}
-                                alt="Foto do usuário"
-                            />
-                        </li>
-                    </ul>
+                    <Menu
+                        className={Styles.menuConfig}
+                        mode="horizontal"
+                        items={itemsConfiguracoes}
+                        theme="dark"
+                        style={{ background: 'transparent', borderBottom: 'none' }}
+                    />
+                    <Menu
+                        mode="horizontal"
+                        items={itemsNotificacoes}
+                        theme="dark"
+                        style={{ background: 'transparent', borderBottom: 'none' }}
+                    />
+                    <Avatar
+                        src="https://i.pravatar.cc/40"
+                        size={44}
+                        alt="Foto do usuário"
+                    />
                 </nav>
             </div>
 

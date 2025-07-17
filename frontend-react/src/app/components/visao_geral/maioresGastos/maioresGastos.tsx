@@ -1,6 +1,6 @@
 'use client';
 
-import Styles from "./maioresGastos.module.css";
+import Styles from "../maioresGastos/maioresGastos.module.css";
 import { HomeOutlined, DotChartOutlined, BulbOutlined } from "@ant-design/icons";
 
 

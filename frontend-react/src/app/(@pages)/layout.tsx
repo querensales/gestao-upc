@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "../globals.css";
-import MenuFixo from "../components/menufixo/menuFixo";
+import MenuFixo from "../components/visao_geral/menufixo/menuFixo";
 
 export const metadata: Metadata = {
   title: "Unção Profética Church",

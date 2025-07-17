@@ -1,8 +1,8 @@
-import ContasApagar from "@/app/components/contasApagar/contasApagar";
+import ContasApagar from "@/app/components/visao_geral/contasApagar/contasApagar";
 import Style from "./page.module.css";
-import MaioresGastos from "@/app/components/maioresGastos/maioresGastos";
-import SaldoGeral from "@/app/components/saldoGeral/saldoGeral";
-import VisaoGeral from "@/app/components/visaogeral/visaoGeral";
+import MaioresGastos from "@/app/components/visao_geral/maioresGastos/maioresGastos";
+import SaldoGeral from "@/app/components/visao_geral/saldoGeral/saldoGeral";
+import VisaoGeral from "@/app/components/visao_geral/visaogeral/visaoGeral";
 
 export default function HomePagina() {
     return (
