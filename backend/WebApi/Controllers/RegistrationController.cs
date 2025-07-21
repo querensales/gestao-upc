@@ -4,6 +4,7 @@ using AppService.Domain.Registration.Validator;
 using AppService.Extension;
 using Microsoft.AspNetCore.Mvc;
 using Repository;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApi.Controllers;
 
@@ -63,6 +64,30 @@ public class RegistrationController : ControllerBase
         }
         await _registrationService.AddCategoryAsync(request);
         return Created();
+    }
+
+    [HttpPost("add-record")]
+    [Authorize]
+    public async Task<IActionResult> AddRecord([FromBody] AddRecordRequest request)
+    {
+        await _registrationService.AddRecordAsync(request);
+        return StatusCode(201);
+    }
+
+    [HttpPut("update-record")]
+    [Authorize]
+    public async Task<IActionResult> UpdateRecord([FromBody] UpdateRecordRequest request)
+    {
+        await _registrationService.UpdateRecordAsync(request);
+        return NoContent();
+    }
+
+    [HttpDelete("delete-record/{id}")]
+    [Authorize]
+    public async Task<IActionResult> DeleteRecord([FromRoute] Guid id)
+    {
+        await _registrationService.DeleteRecordAsync(id);
+        return NoContent();
     }
 
     [HttpGet("get-accounts")]

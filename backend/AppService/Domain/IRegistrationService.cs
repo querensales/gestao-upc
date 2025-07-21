@@ -13,4 +13,8 @@ public interface IRegistrationService
 
     Task AddCategoryAsync(AddCategoryRequest request);
     Task<List<CategoryResponse>> GetCategoriesAsync();
+
+    Task AddRecordAsync(AddRecordRequest request);
+    Task UpdateRecordAsync(UpdateRecordRequest request);
+    Task DeleteRecordAsync(Guid id);
 }
