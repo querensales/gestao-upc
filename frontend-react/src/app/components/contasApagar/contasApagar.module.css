@@ -1,0 +1,63 @@
+.container {
+    background: #fff;
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 24px;
+
+    width: 100%;
+}
+
+.saldoGeral {
+    margin-bottom: 8px;
+}
+
+.contasBox {
+    margin-top: 8px;
+}
+
+.tituloContas {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #2f303f;
+}
+
+.listaContas {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.itemConta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+   
+}
+
+.iconeConta {
+    font-size: 1.5rem;
+    color: #2f303f;
+    margin-right: 12px;
+}
+
+.valorConta {
+    font-weight: 500;
+    color: #e67e22;
+    margin-left: 16px;
+}
+
+.vencimento {
+    display: flex;
+    align-items: center;
+    font-size: 0.95rem;
+    color: #7f8c8d;
+    margin-left: 16px;
+}
+
+.vencimento svg {
+    margin-right: 4px;
+}
