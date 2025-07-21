@@ -26,6 +26,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<ISecurityService, SecurityService>();
 builder.Services.AddScoped<IRegistrationService, RegistrationService>();
+builder.Services.AddScoped<IRecordService, RecordService>();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 
