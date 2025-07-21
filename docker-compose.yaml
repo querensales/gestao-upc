@@ -22,7 +22,9 @@ services:
             - "15672:15672"
         
     api:
-        build: ./backend
+        build:
+          context: ./backend
+          dockerfile: WebApi/Dockerfile
         container_name: api_container
         ports:
             - "5223:5223"

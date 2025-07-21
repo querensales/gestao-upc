@@ -54,4 +54,12 @@ public class RecordController : ControllerBase
         var result = await _recordService.GetAllRecordsAsync();
         return Ok(result);
     }
+
+    [HttpGet("balance")]
+    [Authorize]
+    public async Task<IActionResult> GetCurrentMonthBalance()
+    {
+        var result = await _recordService.GetCurrentMonthBalanceAsync();
+        return Ok(result);
+    }
 } 

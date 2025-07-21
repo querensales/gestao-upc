@@ -48,7 +48,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 var app = builder.Build();
-// Aplicando migra��es
+// Aplicando migrações
 using (var scope = app.Services.CreateScope())
 {
     await Task.Delay(TimeSpan.FromSeconds(30));

@@ -10,5 +10,6 @@ public interface IRecordService
     Task DeleteRecordAsync(Guid id);
     Task<RecordResponse> GetRecordByIdAsync(Guid id);
     Task<List<RecordResponse>> GetAllRecordsAsync();
+    Task<BalanceSummaryResponse> GetCurrentMonthBalanceAsync();
     // Métodos para listagem e consulta podem ser adicionados futuramente
 } 

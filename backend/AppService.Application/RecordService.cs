@@ -74,4 +74,30 @@ public class RecordService : IRecordService
             // Value, Date, Description idem acima
         }).ToList();
     }
+
+    public async Task<BalanceSummaryResponse> GetCurrentMonthBalanceAsync()
+    {
+        var now = DateTime.Now;
+        var firstDay = new DateTime(now.Year, now.Month, 1);
+        var lastDay = firstDay.AddMonths(1).AddDays(-1);
+
+        var records = _appDbContext.Record
+            .Where(r => r.Date >= firstDay && r.Date <= lastDay)
+            .Select(r => new {
+                r.Value,
+                CategoryName = r.SubCategory.Category.Name
+            })
+            .ToList();
+
+        decimal totalIncome = records.Where(r => r.CategoryName.ToLower() == "receita").Sum(r => r.Value);
+        decimal totalExpense = records.Where(r => r.CategoryName.ToLower() == "despesa").Sum(r => r.Value);
+        decimal totalBalance = totalIncome - totalExpense;
+
+        return new BalanceSummaryResponse
+        {
+            TotalBalance = totalBalance,
+            TotalIncome = totalIncome,
+            TotalExpense = totalExpense
+        };
+    }
 } 
