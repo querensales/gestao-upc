@@ -1,23 +1,24 @@
 'use client';
 
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import { EyeOutlined, EyeInvisibleOutlined, BankOutlined, MoneyCollectOutlined } from '@ant-design/icons';
 import Styles from './saldoGeral.module.css';
 
 function SaldoGeral() {
     const [mostrarSaldo, setMostrarSaldo] = useState(true);
     const [totalSaldo, setTotalSaldo] = useState(0);
-
-    const contas = useMemo(() => [
-        { id: 1, nome: 'Cora', valor: 3000.00, icone: <BankOutlined className={`${Styles.iconeConta} ${Styles.coraIcone}`} /> },
+    
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const contas = [
+        { id: 1, nome: 'Cora', valor: 5000.00, icone: <BankOutlined className={`${Styles.iconeConta} ${Styles.coraIcone}`} /> },
         { id: 2, nome: 'Nubank', valor: 2000.00, icone: <BankOutlined className={`${Styles.iconeConta} ${Styles.nubankIcone}`} /> },
         { id: 3, nome: 'Dinheiro', valor: 2000.00, icone: <MoneyCollectOutlined className={`${Styles.iconeConta} ${Styles.dinheiroIcone}`} /> },
-    ], []);
+    ];
 
     useEffect(() => {
         const soma = contas.reduce((acc, conta) => acc + conta.valor, 0);
         setTotalSaldo(soma);
-    }, [contas]);
+    },[contas ]);
 
     const VisualizarSaldo = () => {
         setMostrarSaldo(!mostrarSaldo);

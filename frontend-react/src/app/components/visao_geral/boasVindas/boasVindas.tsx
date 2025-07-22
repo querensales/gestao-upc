@@ -8,8 +8,6 @@ export default function boasVindas() {
     }
 
 
-
-
     return (
         <section className={Styles.section}>
             <div className={Styles.ola}>
