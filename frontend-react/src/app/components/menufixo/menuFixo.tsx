@@ -57,7 +57,7 @@ export default function MenuFixo() {
                     <Link href="/home" className={Styles.link}>
                         visão geral
                     </Link>
-                    <Link href="/" className={Styles.link}>
+                    <Link href="/lancamentos" className={Styles.link}>
                         lançamentos
                     </Link>
                     <Link href="/" className={Styles.link}>
