@@ -21,6 +21,7 @@ public class RegistrationService : IRegistrationService
         {
             Active = true,
             Name = request.Name,
+            UserId = request.UserId,
         });
 
         await _appDbContext.SaveChangesAsync();
@@ -44,6 +45,42 @@ public class RegistrationService : IRegistrationService
             Name = request.Name
         });
 
+        await _appDbContext.SaveChangesAsync();
+    }
+
+    public async Task AddRecordAsync(AddRecordRequest request)
+    {
+        await _appDbContext.Record.AddAsync(new Record
+        {
+            Name = request.Name,
+            SubCategoryId = request.SubCategoryId,
+            AccountId = request.AccountId,
+            // Value, Date, Description não existem ainda na entidade Record, mas já estão previstos no DTO
+            // Adicione esses campos na entidade Record para persistir corretamente
+        });
+        await _appDbContext.SaveChangesAsync();
+    }
+
+    public async Task UpdateRecordAsync(UpdateRecordRequest request)
+    {
+        var record = await _appDbContext.Record.FindAsync(request.Id);
+        if (record is null) throw new Exception("Lançamento não encontrado");
+        record = record with
+        {
+            Name = request.Name,
+            SubCategoryId = request.SubCategoryId,
+            AccountId = request.AccountId,
+            // Value, Date, Description idem acima
+        };
+        _appDbContext.Record.Update(record);
+        await _appDbContext.SaveChangesAsync();
+    }
+
+    public async Task DeleteRecordAsync(Guid id)
+    {
+        var record = await _appDbContext.Record.FindAsync(id);
+        if (record is null) throw new Exception("Lançamento não encontrado");
+        _appDbContext.Record.Remove(record);
         await _appDbContext.SaveChangesAsync();
     }
 
