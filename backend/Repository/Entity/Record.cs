@@ -10,4 +10,5 @@ public record Record
     public string Name { get; set; }
     public Guid SubCategoryId { get; set; }
     public virtual SubCategory SubCategory { get; set; }
+    public Guid AccountId { get; set; }
 }
