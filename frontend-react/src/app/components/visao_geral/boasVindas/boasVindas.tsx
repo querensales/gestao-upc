@@ -1,3 +1,5 @@
+
+import { formatarMoeda } from '@/extensions/numberExtesion'
 import Styles from './boasVindas.module.css'
 
 export default function boasVindas() {
@@ -18,12 +20,12 @@ export default function boasVindas() {
             <div className={Styles.mesAtual}>
                 <div>
                     <p>Receitas no mês atual</p>
-                    <p>R$ {informacoes.receitaTotal}</p>
+                    <p>R$ {formatarMoeda(informacoes.receitaTotal)}</p>
                 </div>
                 <span className={Styles.divisor}>|</span>
                 <div className={Styles.mesAtual}>
                     <p>Despesas no mês atual</p>
-                    <p>R$ {informacoes.despesaTotal}</p>
+                    <p>R$ {formatarMoeda(informacoes.despesaTotal)}</p>
                 </div>
             </div>
         </section>
