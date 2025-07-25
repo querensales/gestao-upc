@@ -23,5 +23,16 @@ public class AppDbContext : DbContext
     public virtual DbSet<Category> Category { get; set; }
     public virtual DbSet<CreditCard> CreditCard { get; set; }
     public virtual DbSet<Record> Record { get; set; }
-    public virtual DbSet<SubCateegory> SubCategory { get; set; }
+    public virtual DbSet<SubCategory> SubCategory { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<Account>()
+            .HasOne(a => a.User)
+            .WithMany(u => u.Accounts)
+            .HasForeignKey(a => a.UserId)
+            .OnDelete(DeleteBehavior.Cascade);
+    }
 }

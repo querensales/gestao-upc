@@ -8,4 +8,5 @@ public record User
     public Guid Id { get; init; } = Guid.NewGuid();
     public string Email { get; init; }
     public string Password { get; set; }
+    public virtual ICollection<Account> Accounts { get; set; }
 }

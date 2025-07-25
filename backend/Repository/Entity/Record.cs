@@ -8,4 +8,6 @@ public record Record
     public Guid Id { get; init; } = Guid.NewGuid();
 
     public string Name { get; set; }
+    public Guid SubCategoryId { get; set; }
+    public virtual SubCategory SubCategory { get; set; }
 }

@@ -2,7 +2,7 @@
 
 namespace Repository.Entity;
 
-public record SubCateegory
+public record SubCategory
 {
     [Key]
     public Guid Id { get; init; }

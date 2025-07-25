@@ -91,7 +91,7 @@ namespace Repository.Migrations
                     b.ToTable("Record");
                 });
 
-            modelBuilder.Entity("Repository.Entity.SubCateegory", b =>
+            modelBuilder.Entity("Repository.Entity.SubCategory", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -130,7 +130,7 @@ namespace Repository.Migrations
                     b.ToTable("User");
                 });
 
-            modelBuilder.Entity("Repository.Entity.SubCateegory", b =>
+            modelBuilder.Entity("Repository.Entity.SubCategory", b =>
                 {
                     b.HasOne("Repository.Entity.Category", "Category")
                         .WithMany("SubCategory")
