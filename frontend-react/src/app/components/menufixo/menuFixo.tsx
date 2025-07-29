@@ -60,14 +60,11 @@ export default function MenuFixo() {
                     <Link href="/lancamentos" className={Styles.link}>
                         lançamentos
                     </Link>
-                    <Link href="/" className={Styles.link}>
+                    <Link href="" className={Styles.link}>
                         relatórios
                     </Link>
-                    <Link href="/" className={Styles.link}>
+                    <Link href="" className={Styles.link}>
                         limite de gastos
-                    </Link>
-                    <Link href="/" className={Styles.link}>
-                        conexão bancária
                     </Link>
                 </nav>
                 <nav className={Styles.config}>
