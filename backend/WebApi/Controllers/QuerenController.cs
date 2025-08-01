@@ -110,7 +110,7 @@ public class QuerenController : ControllerBase
         get
         {
             var faker = new Faker<PessoaResponse>("pt_BR")
-                        .RuleFor(p => p.Id, Guid.NewGuid())
+                        .RuleFor(p => p.Id, f=>f.Random.Guid())
                         .RuleFor(p => p.Nome, f => f.Person.FullName)
                         .RuleFor(p => p.Cpf, f => long.Parse(f.Person.Cpf(false)))
                         .RuleFor(p => p.DataNascimento, f => f.Person.DateOfBirth);
